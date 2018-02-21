@@ -1,3 +1,3 @@
-module.exports = {
-    database: "mongodb://localhost/m_gidro"
-}
+// module.exports = {
+//     database: "mongodb://localhost/m_gidro"
+// }
