@@ -11,7 +11,7 @@ var express    = require("express"),
     passport   = require("passport");
     
     // Connect to db
-    mongoose.connect(config.database);
+    mongoose.connect("mongodb://Marat1985:12341985@ds123084.mlab.com:23084/m-gidro");
     var db = mongoose.connection;
     db.on('error', console.error.bind(console, 'connection error:'));
     db.once('open',function(){
