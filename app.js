@@ -148,6 +148,6 @@ var express    = require("express"),
 
     
     
-    app.listen(process.env.PORT || 3000 || 50132, process.env.IP, function(){
+    app.listen(process.env.PORT || 22, process.env.IP, function(){
     console.log("Server has started!!!");
 });
