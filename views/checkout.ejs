@@ -1,0 +1,72 @@
+<% include partials/header %> 
+<link rel="stylesheet" href="/stylesheets/style.css">
+
+<div class="container">
+<div class="col-xs-12 col-md-10 p-1 bor mx-auto">
+<div class="table-responsive">         
+<% if (typeof cart !== "undefined") { %>
+<h1 class="page-title">Моя корзина</h1>
+<br>
+<table id="cart" class="table table-hover table-condensed table-striped alignmiddle">
+    <thead>
+    <tr>
+        <th style="width:25%">Фото</th>
+        <th style="width:25%">Товар</th>
+        <th style="width:8%">Цена</th>
+        <th style="width:12%">Кол-во</th>
+        <th style="width:12%">Изменить</th>
+        <th style="width:10%">Сумма</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% var total = 0; %>
+    <% cart.forEach(function(product){ %>
+    <% var sub = parseFloat(product.qty * product.price).toFixed(2) %>
+    <% total += +sub %>
+        
+        <tr>
+            <td data-th="Фото"><img class="cpi" src="<%= product.image %>"></td>
+            <td data-th="Товар"><%= product.title %></td>
+            <td data-th="Цена"><%= product.price %> руб.</td>
+            <td data-th="Кол-во"><%= product.qty %></td>
+            <td data-th="Изменить">
+                <a href="/cart/update/<%= product.title %>?action=add"><i class="fa fa-plus-square ls-icon" aria-hidden="true"></i> </a>&nbsp;
+                <a href="/cart/update/<%= product.title %>?action=remove"> <i class="fa fa-minus-square ls-icon" aria-hidden="true"></i></a>&nbsp;
+                <a href="/cart/update/<%= product.title %>?action=clear"> <i class="fa fa-window-close ls-icond" aria-hidden="true"></i></a>&nbsp;
+            </td>
+            <td data-th="Сумма"><%= sub %> руб.</td>
+        </tr>
+
+    <% }); %>
+    </tbody>
+    <tfoot>
+        <tr class="visible-xs">
+            <td colspan="6" align="right"><b>Итого: </b> <%= parseFloat(total).toFixed(2) %> руб.</td>
+        </tr>
+        <tr>
+           <td data-th="" colspan="5" align="right">
+               <a class="clearcart btn btn-danger" href="/cart/clear">Очистить корзину</a>
+           </td>   
+           <td data-th="" colspan="5" align="right">
+               <a class="btn btn-success" href="/cart/buy">Купить</a>
+           </td>              
+        </tr>
+        </tfoot>
+</table>
+
+<% } else { %>
+<h3 class="text-center">Ваша корзина пуста</h3>
+
+<% } %>
+</div>
+</div>
+</div>
+<script src="scripts/background.js"></script>
+<script>
+    $(function(){
+     $('a.clearcart').on('click', function(){
+     if(!confirm('Очистить корзину?'))
+     return false;
+  });
+    })
+</script>

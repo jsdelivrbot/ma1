@@ -1,0 +1,77 @@
+<% include partials/header %> 
+
+<html>
+    <head>
+        <meta charset = "UTF-8">
+        <meta name="viewport" content = "width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Contact</title>
+    </head>
+<body class="allcontact">
+
+<div class="container-contact">
+    <h1 class="brand"><span>М-ГИДРО</span></h1>
+    <div class="wrapper animated bounceInLeft">
+       <div class="company-info">
+          <h3>М-ГИДРО</h3>
+          <ul>
+              <li><i class="fa fa-road"></i> ул.Достоевского 66/17</li>
+              <li><i class="fa fa-phone"></i> +7(843)290-02-35</li>
+              <li><i class="fa fa-envelope"></i> mgidro16@gmail.com</li>
+          </ul>
+       </div>
+       <div class="contact">
+           <h3>Отправление Заявки</h3>
+           <form name="forma" id="gform" method="POST" action="https://script.google.com/macros/s/AKfycby31tMDTmhPOg3LALpLTGjz-YxSgTUUiFQCUTySxQ7bASrOUmE/exec">
+               <p>
+                   <label>Имя</label>
+                   <input type="text" name="name">
+               </p>
+               <p>
+                   <label>Компания</label>
+                   <input type="text" name="company">
+               </p>
+               <p>
+                   <label>Ваш Email Адрес</label>
+                   <input type="text" name="email" placeholder="Обязательно для заполнения">
+               </p>
+               <p>
+                   <label>Номер телефона</label>
+                   <input type="text" name="phone">
+               </p>
+
+               <p>
+                   <label>Товар из корзины</label>
+                <% var num = 0; %>
+                <% cart.forEach(function(p) { %>
+                   <input type="text" name="product + <%= p.title %>" value="<%= p.title %>">
+               <% }); %> 
+               </input>
+               </p>
+
+               <p class="full">
+                   <label>Сообщение</label>
+                   <textarea name="message" rows="5" placeholder="Указать адрес и место доставки"></textarea>
+               </p> 
+               <p class="full">
+                   <button class="btn btn-info">Отправить</button>
+               </p>
+           </form>
+           
+       </div>
+    </div>
+</div>
+
+
+<script data-cfasync="false" type="text/javascript"
+src="https://cdn.rawgit.com/dwyl/html-form-send-email-via-google-script-without-server/master/form-submission-handler.js"></script>
+
+<script type="text/javascript">
+document.forms['forma'].onsubmit = function(){ 
+alert('Спасибо, Ваша заявка принята!');
+return false;
+};
+</script>
+    
+</body>
+</html>

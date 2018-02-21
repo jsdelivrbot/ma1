@@ -1,0 +1,28 @@
+<% include ../partials/adminheader %> 
+
+
+<div class="container">
+<h2 class="page-title">Изменить Страницу</h2>
+<a href="/admin/pages" class="btn btn-primary">Назад ко всем страницам</a>
+<br><br>
+
+<form method="post" action="/admin/pages/edit-page/<%=  id %>">
+    <div class="form-group">
+        <label for="">Название</label>
+        <input type="text" class="form-control" name="title" value="<%= title %>" placeholder="Название">
+    </div>
+    
+        <div class="form-group">
+        <label for="">Slug</label>
+        <input type="text" class="form-control" name="slug" value="<%= id %>" placeholder="slug">
+    </div>
+    
+        <div class="form-group">
+        <label for="">Контент</label>
+        <textarea name="content" class="form-control" id="ta" cols="30" rows="10" placeholder="Контент"><%= content %></textarea>
+    </div>
+    
+    <button class="btn btn-default">Изменить</button>
+</form>
+</div>
+<% include ../partials/adminfooter %> 

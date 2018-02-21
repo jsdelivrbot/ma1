@@ -1,0 +1,29 @@
+<% include ../partials/adminheader %> 
+
+
+<div class="container">
+<h2 class="page-title">Категории</h2>
+<a href="/admin/categories/add-category" class="btn btn-primary">Добавить Новую Категорию</a>
+<br><br>
+<table class="table table-striped sorting">
+    <thead>
+        <tr class="home">
+            <th>Категория</th>
+            <th>Изменить</th>
+            <th>Удалить</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% categories.forEach(function(cat){ %>
+        <tr>
+            <td><%= cat.title %></td>
+            <td><a href="/admin/categories/edit-category/<%= cat._id %>">Изменить</a></td>
+            <td><a class="confirmDeletion" href="/admin/categories/delete-category/<%= cat._id %>">Удалить</a></td>
+        </tr>
+           
+        <% }); %>
+    </tbody>
+</table>
+
+</div>
+<% include ../partials/adminfooter %> 

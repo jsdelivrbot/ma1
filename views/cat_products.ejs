@@ -1,0 +1,56 @@
+<% include partials/header %> 
+<% include partials/headermenumob %> 
+
+<link rel="stylesheet" href="/stylesheets/style.css">
+
+  <div class="col-xs-12 col-md-8">
+    
+    <div class="col-xs-12 col-md-8 cat" style="display:inline;">
+      <strong style="text-align:center; font-size:24px; border-bottom:1px solid black"><%= title %></strong><p></p>
+      <strong style="display:table-cell">Категории:</strong><p></p>
+      <form  action="/products" class="my-2 my-lg-0" method="GET" style="display:table-cell;padding-right:5px">
+            <div class="form-group">
+      <input class="hidden" type="hidden" name="search" placeholder="Поиск оборудования">
+      <button class="active btn btn-outline-dark my-2 my-sm-0" type="submit" >Все</button>
+</div>
+    </form>
+    <form  action="/products" class="my-2 my-lg-0" method="GET" style="display:table-cell;padding-right:5px">
+            <div class="form-group">
+      <input class="hidden" type="hidden" name="search" placeholder="Поиск оборудования" value="Бытовой <%= title %>">
+      <button class="btn btn-outline-dark my-2 my-sm-0" type="submit" >Бытовая группа</button>
+</div>
+    </form>
+          <form  action="/products" class="my-2 my-lg-0" method="GET" style="display:table-cell;">
+            <div class="form-group">
+      <input class="hidden" type="hidden" name="search" placeholder="Поиск оборудования" value="Промышленный <%= title %>">
+      <button class="btn btn-outline-dark my-2 my-sm-0" type="submit" >Пром группа</button>
+</div>
+    </form>
+    </div>
+    
+<div class="animated zoomIn">
+<div class="row products text-center" style="display: flex; flex-wrap: wrap">
+  <% products.forEach(function(p){ %>
+    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 p-3">
+      <div class="img-thumbnail mag">
+      <a class="pa" href = "/products/<%= p.category %>/<%= p.slug %>">
+        <img class="pimage" src="/product_images/<%= p._id %>/<%= p.image %>">
+      </a>
+      <h4><%= p.title %></h4>
+      <h5><strong><%= parseFloat(p.price).toFixed(2) %> руб.</strong></h5>
+      <p></p>
+      <a href="/cart/add/<%= p.slug %>" class="btn btn-sm btn-success"><i class="fa fa-cart-plus" aria-hidden="true"></i> В корзину</a>
+      <a class="vd btn btn-sm btn-primary" href="/products/<%= p.category %>/<%= p.slug %>">Описание...</a>
+      <p></p>
+    </div>
+    </div>
+  <% }); %>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+

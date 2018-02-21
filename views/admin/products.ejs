@@ -1,0 +1,49 @@
+<% include ../partials/adminheader %> 
+
+
+<div class="container">
+<h2 class="page-title">Товары</h2>
+<a href="/admin/products/add-product" class="btn btn-primary">Добавить Новый Товар</a>
+<br><br>
+
+<% if(count>0) { %>
+
+
+<table class="table table-striped sorting alignmiddle">
+    <thead>
+        <tr class="home">
+            <th>Товар</th>
+            <th>Стоимость</th>
+            <th>Категория</th>
+            <th>Фото Товара</th>
+            <th>Изменить</th>
+            <th>Удалить</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% products.forEach(function(product){ %>
+        <tr>
+            <td><%= product.title %></td>
+            <td><%= parseFloat(product.price).toFixed(2) %> руб.</td>
+            <td><%= product.category %></td>
+            <td>
+                <% if (product.image == "") { %>
+                <img id="noimage" src="/pictures/noimage.jpg">
+                <% } else { %>
+                <img id="noimage" src="/product_images/<%= product._id %>/<%= product.image %>">
+                <% } %>
+            </td>
+            <td><a href="/admin/products/edit-product/<%= product._id %>">Изменить</a></td>
+            <td><a class="confirmDeletion" href="/admin/products/delete-product/<%= product._id %>">Удалить</a></td>
+        </tr>
+           
+        <% }); %>
+    </tbody>
+</table>
+
+<% } else { %>
+<h3 class="text-center">Нет Товаров</h3>
+<% } %>
+
+</div>
+<% include ../partials/adminfooter %> 

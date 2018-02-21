@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Водоподготовка</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
+        <link rel="stylesheet" href="/stylesheets/main.css">
+        <link rel="stylesheet" href="/stylesheets/style.css">
+        <link rel="stylesheet" href="/stylesheets/animate.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+<nav class="navbar navbar-expand-lg fixed-top navbar-light bg-inverse d-flex justify-content-center flex-row">
+<div class="container-fluid">
+  <a class="navbar-brand ml=auto myLogo" href="/"><img src="/pictures/Logo.png"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mx-auto justify-content-center">
+      <% pages.forEach(function(page) { %> 
+      <% if (page.slug == "home") { %>
+      <li class="nav-item active">
+        <a class="nav-link text-dark" href="/"><%= page.title %><span class="sr-only">(current)</span></a>
+      </li>      
+      <% } else { %>
+      <li class="nav-item active">
+        <a class="nav-link text-dark" href="/<%= page.slug %>/"><%= page.title %><span class="sr-only">(current)</span></a>
+      </li>
+      <% } %>
+      <% }); %>
+          <form  action="/products" class="form-inline my-2 my-lg-0" method="GET">
+            <div class="form-group">
+      <input class="form-control mr-sm-2" type="text" name="search" placeholder="Поиск оборудования">
+      <button class="btn btn-outline-dark my-2 my-sm-0" type="submit"><i class="fa fa-search" aria-hidden="true"></i>
+      </button>
+</div>
+    </form>
+    </ul>
+             <ul class="nav navbar-nav justify-content-end hidden-sm-up">
+               <li class="nav-item"><a class="nav-link text-dark" href="/cart/checkout"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Корзина (
+               <% if(typeof cart !=="undefined") { %>
+               <%= cart.length %>
+               <% } else { %>
+               0
+               <% } %>
+               )</a></li>
+              <% if (user) { %>
+              <li class="nav-item"><a class="nav-link text-dark" href="/users/logout"><i class="fas fa-user-times" aria-hidden="true">
+              </i> Выйти</a></li>
+              <% } else { %>
+                  <li class="nav-item"><a class="nav-link text-dark" href="/users/login"><i class="fa fa-user-circle" aria-hidden="true"></i>
+                  Вход</a></li>
+                  <li class="nav-item"><a class="nav-link text-dark" href="/users/register"><i class="fa fa-user-plus" aria-hidden="true"></i></a></li>
+              <% } %>  
+              
+              <% if (user && user.admin == 1) { %>
+              <li class="nav-item"><a class="nav-link text-dark" href="/admin/pages">Admin Area</a></li>
+              <% } %>
+            </ul>
+  </div>
+</div>
+</nav>
+<div class="container">
+  <%- messages('messages', locals) %>
+</div>
+<% if(errors) { %>
+   <% errors.forEach(function(error) { %>
+      <div class="alert alert-danger">
+        <%= error.msg %>
+      </div>
+   <% }); %>
+<% } %>
+
+   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+   <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+   <script src="https://use.fontawesome.com/98e0c63224.js"></script>
+   <script type="text/javascript" src="/scripts/background.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
+
+</body>

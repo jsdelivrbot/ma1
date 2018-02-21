@@ -1,0 +1,38 @@
+<% include partials/header %> 
+
+
+<div class="container">
+    <div class="col-xs-12 col-md-6 mx-auto">
+    <div class="img-thumbnail">
+<h1 style="text-align:center"><%= title %></h1>
+
+<form method="post" action="/users/register">
+        <div class="form-group">
+        <label for="">Имя</label>
+        <input type="text" class="form-control" name="name" placeholder="Имя">
+    </div>
+    
+        <div class="form-group">
+        <label for="">Email</label>
+        <input type="text" class="form-control" name="email" placeholder="email">
+    </div>
+    
+        <div class="form-group">
+        <label for="">Имя пользователя</label>
+        <input type="text" class="form-control" name="username" placeholder="Имя пользователя">
+    </div>    
+
+        <div class="form-group">
+        <label for="">Пароль</label>
+        <input type="password" class="form-control" name="password" placeholder="Пароль">
+    </div>   
+
+        <div class="form-group">
+        <label for="">Подтвердите Пароль</label>
+        <input type="password" class="form-control" name="password2" placeholder="Подтвердите Пароль">
+    </div>      
+    <button type="submit" class="btn btn-info btn-block">Регистрация</button>
+</form>
+</div>
+</div>
+</div>

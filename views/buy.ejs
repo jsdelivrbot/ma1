@@ -1,0 +1,59 @@
+<% include partials/header %> 
+<link rel="stylesheet" href="/stylesheets/style.css">
+
+<div class="container">
+<div class="col-xs-12 col-md-10 p-1 bor mx-auto">
+<div class="table-responsive text-center">         
+<% if (typeof cart !== "undefined") { %>
+<h1 class="page-title">Как купить:</h1>
+<br>
+    <tbody>
+    <% var total = 0; %>
+    <% cart.forEach(function(product){ %>
+    <% var sub = parseFloat(product.qty * product.price).toFixed(2) %>
+    <% total += +sub %>
+    <% }); %>
+    </tbody>
+<form class="pp" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_cart">
+<input type="hidden" name="upload" value="1">
+<input type="hidden" name="business" value="valievmarat1985@gmail.com">
+<% var num = 0; %>
+<% cart.forEach(function(p) { %>
+    <% num++ %>
+    <input type hidden="hidden" name="item_name_<%= num %>" value="<%= p.title %>">
+    <input type hidden="hidden" name="amount_<%= num %>" value="<%= p.price %>">
+    <input type hidden="hidden" name="quantity_<%= num %>" value="<%= p.qty %>">
+<% }); %>
+<input type="hidden" name="currency_code" value="RUB">
+<input type="hidden" name="amount" value="<%= total %>">
+<p><strong>Оплата банковской картой (без процентов):</strong></p>
+<input type="image" src="/pictures/PPP-Card-ArtHR-1024x673.jpg" 
+style="width:100px" name="submit" alt="Нажмите здесь!">
+</form>
+
+<% } else { %>
+<h3 class="text-center">Ваша корзина пуста</h3>
+
+<% } %>
+<form action="/cart/contact">
+<p><strong>Оплата наличными при получении:</strong></p>
+<input type="image" 
+src="/pictures/oplata-nal.png" style="width:150px" name="submit" alt="Нажмите здесь!">
+
+<p><strong>Выписать счет:</strong></p> 
+<input type="image" action="" 
+src="/pictures/pay_bnk.png" style="width:200px" name="submit" alt="Нажмите здесь!">
+</form>
+</div>
+</div>
+</div>
+<script src="scripts/background.js"></script>
+<script>
+    $(function(){
+     $('a.clearcart').on('click', function(){
+     if(!confirm('Очистить корзину?'))
+     return false;
+  });
+    })
+</script>

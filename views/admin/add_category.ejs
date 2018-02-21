@@ -1,0 +1,18 @@
+<% include ../partials/adminheader %> 
+
+
+<div class="container">
+<h2 class="page-title">Добавить категорию</h2>
+<a href="/admin/categories" class="btn btn-primary">Назад ко всем категориям</a>
+<br><br>
+
+<form method="post" action="/admin/categories/add-category">
+    <div class="form-group">
+        <label for="">Название</label>
+        <input type="text" class="form-control" name="title" value="<%= title %>" placeholder="Название">
+    </div>
+        
+    <button class="btn btn-default">Добавить</button>
+</form>
+</div>
+<% include ../partials/adminfooter %> 

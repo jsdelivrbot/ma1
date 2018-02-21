@@ -1,0 +1,78 @@
+.thumbnail img {
+    width: 100%;
+}
+
+.img-thumbnail, .card-img-top, .bor{
+    box-shadow:0 0 20px 0 rgba(72,94,116,0.7)
+}
+
+.thumbnail {
+    padding: 0;
+}
+
+.thumbnail .caption-full {
+    padding: 9px;
+}
+
+#delete-form {
+    display: inline;
+}
+
+.navbar-light {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navborder {
+    position: relative;
+    width: 55%;
+    border-top: 1px solid #515252;
+    border-bottom: 1px solid black;
+    padding-top: 75px;
+    text-align: center;
+    margin-bottom:20px;
+}
+
+.myLogo {
+    padding-right: 100px;
+}
+
+
+    @media (min-width: 768px) {
+     .navbar-nav.navbar-center {
+       position: absolute;
+       left: 50%;
+       transform: translatex(-50%);
+      }
+    }
+    
+.navbar-nav > li > .dropdown-menu { background-color: #D1D3E1; }
+
+body { padding-top: 100px; }
+
+
+.img-thumbnail .mag {
+    max-height: 150px;
+    max-width: 150px;
+}
+
+.thumbnail .description {
+    color:#7f7f7f;
+}
+
+.price {
+    color: #B32700;
+    border: solid;
+}
+
+.img-responsive {
+    max-height: 200px;
+    max-width: 200px;
+}
+
+.md{
+    background-color: white;
+    padding-bottom: 12%;
+    border-left: double;
+    border-right: double;
+    border-color: #D4EAF7;
+}
