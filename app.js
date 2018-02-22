@@ -148,6 +148,6 @@ var express    = require("express"),
 
     
     
-    app.listen(60025, process.env.IP, function(){
+    app.listen(80, process.env.IP, function(){
     console.log("Server has started!!!");
 });
