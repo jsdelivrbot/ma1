@@ -1,7 +1,12 @@
+
+"repository": {
+  "type": "git",
+  "url": "git://github.com/Marat12/ma.git"
+}
 {
   "name": "cmscart",
   "version": "1.0.0",
-  "description": "",
+  "description": "magazine",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
