@@ -8,7 +8,8 @@ var express    = require("express"),
     expressValidator = require("express-validator"),
     fileUpload = require("express-fileupload"),
     nodemailer = require("nodemailer"),
-    passport   = require("passport");
+    passport   = require("passport"),
+    compression = require("compression");
     
     // Connect to db
     mongoose.connect("mongodb://Marat1985:1234Mr1985@ds243798.mlab.com:43798/mgidro");
@@ -22,6 +23,7 @@ var express    = require("express"),
     app.set('views', path.join(__dirname, 'views'));
     app.set("view engine", "ejs");
     
+    app.use(compression());
     // express-fileupload middleware
     app.use(fileUpload());
     
