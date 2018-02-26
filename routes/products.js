@@ -4,13 +4,27 @@ var Product = require("../models/product");
 var Category = require("../models/category");
 var fs = require("fs-extra");
 
-//GET all products/ 
 
-// router.get("/", function(req, res){
-//     res.render('index', {
-//         title: 'Home'
-//     });
-// });
+// Paganation by product
+router.get('/p/:pa', function(req, res, next) {
+var perPage = 12
+var pa = req.params.pa || 1
+
+Product.find()
+    .limit(perPage)
+    .skip((perPage * pa) - perPage)
+    .exec(function(err, products) {
+        Product.count().exec(function(err, count) {
+            res.render('all_products', {
+                products:products,
+                current: pa,
+                pag: count / perPage
+            });
+        });
+    });
+}) ;  
+
+//GET all products/ 
 
 router.get("/", function(req, res){
     var noMatch = null;
@@ -49,6 +63,29 @@ router.get("/", function(req, res){
 }
 });    
 
+
+// Paganation by category
+
+router.get('/:category/s/:pa', function(req, res, next) {
+var perPage = 12
+var pa = req.params.pa || 1
+var categorySlug = req.params.category;
+Category.findOne({slug: categorySlug}, function(err, category) {
+Product.find({category: categorySlug})
+    .limit(perPage)
+    .skip((perPage * pa) - perPage)
+    .exec(function(err, products) {
+        Product.count().exec(function(err, count) {
+            res.render('cat_products', {
+                title: category.title,
+                products:products,
+                current: pa,
+                pag: count / perPage / 2
+            });
+        });
+    });
+}) ;  
+});
 
 
 

@@ -14,9 +14,9 @@
     <img class="card-img-top img-fluid" src="/pictures/voda.jpg" alt="Card image cap">
     <!--<h2>Каталог Товаров</h2>-->
     <div class="list-group-flush card">
-      <strong><a href="/products/"  class="list-group-item text title-hover-background">Весь ассортимент магазина</a></strong>
+      <strong><a href="/products/p/1"  class="list-group-item text title-hover-background">Весь ассортимент магазина</a></strong>
       <% categories.forEach(function(c) { %> 
-      <strong><a class="list-group-item text title-hover-background" href="/products/<%= c.slug %>"><%= c.title %></a></strong>
+      <strong><a class="list-group-item text title-hover-background" href="/products/<%= c.slug %>/s/1"><%= c.title %></a></strong>
       <% }); %>
     </div>
   </div>

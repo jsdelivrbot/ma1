@@ -6,9 +6,9 @@ var Product = require("../models/product");
 
 router.use(function(err, res) {
   if (err) {
-      res.redirect("/products/");
+      res.redirect("/products/p/1");
   } else {
-     res.redirect("/products/");
+     res.redirect("/products/p/1");
   }
 });
 
