@@ -67,7 +67,7 @@ router.get("/", function(req, res){
 // Paganation by category
 
 router.get('/:category/s/:pa', function(req, res, next) {
-var perPage = 12
+var perPage = 10
 var pa = req.params.pa || 1
 var categorySlug = req.params.category;
 Category.findOne({slug: categorySlug}, function(err, category) {
