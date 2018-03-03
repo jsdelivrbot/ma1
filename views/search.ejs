@@ -13,8 +13,8 @@
       <a class="pa" href = "/products/<%= p.category %>/<%= p.slug %>">
         <img class="pimage" src="/product_images/<%= p._id %>/<%= p.image %>">
       </a>
-      <h4><%= p.title %></h4>
-      <h5><strong><%= parseFloat(p.price).toFixed(2) %> руб.</strong></h5>
+      <h5><%= p.title %></h5>
+      <h5 id="prr"><strong><%= parseFloat(p.price).toFixed(2) %> руб.</strong></h5>
       <p></p>
       <a href="/cart/add/<%= p.slug %>" class="btn btn-sm btn-success"><i class="fa fa-cart-plus" aria-hidden="true"></i> В корзину</a>
       <a class="vd btn btn-sm btn-primary" href="/products/<%= p.category %>/<%= p.slug %>">Описание...</a>

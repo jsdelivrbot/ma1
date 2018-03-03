@@ -60,6 +60,21 @@ router.get("/", function(req, res){
             });
         }
      });
+     var perPage = 12
+var pa = req.params.pa || 1
+
+Product.find()
+    .limit(perPage)
+    .skip((perPage * pa) - perPage)
+    .exec(function(err, products) {
+        Product.count().exec(function(err, count) {
+            res.render('all_products', {
+                products:products,
+                current: pa,
+                pag: count / perPage
+            });
+        });
+    });
 }
 });    
 
@@ -67,7 +82,7 @@ router.get("/", function(req, res){
 // Paganation by category
 
 router.get('/:category/s/:pa', function(req, res, next) {
-var perPage = 10
+var perPage = 12
 var pa = req.params.pa || 1
 var categorySlug = req.params.category;
 Category.findOne({slug: categorySlug}, function(err, category) {
@@ -80,7 +95,7 @@ Product.find({category: categorySlug})
                 title: category.title,
                 products:products,
                 current: pa,
-                pag: count / perPage / 2
+                pags: count / perPage
             });
         });
     });
