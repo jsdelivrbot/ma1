@@ -95,7 +95,7 @@ Product.find({category: categorySlug})
                 title: category.title,
                 products:products,
                 current: pa,
-                pags: count / perPage
+                pag: count / perPage / 5
             });
         });
     });
